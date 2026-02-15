@@ -1,4 +1,6 @@
+import { Rackets } from "@/components/Rackets/Rackets";
+
 const Home = () => {
-  return <div>Home page</div>;
+  return <Rackets limit={3} showAllLink />;
 };
 export default Home;
