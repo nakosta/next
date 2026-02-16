@@ -1,12 +1,12 @@
 import { Rackets } from "@/components/Rackets/Rackets";
-import styles from "./RacketsPage.module.css";
+import s from "./RacketsPage.module.css";
 
 const RacketsPage = () => {
   return (
-    <div className={styles.layout}>
-      <aside className={styles.sidebar}>Фильтры (будут здесь)</aside>
+    <div className={s.layout}>
+      <aside className={s.sidebar}>Фильтры (будут здесь)</aside>
 
-      <div className={styles.content}>
+      <div className={s.content}>
         <Rackets />
       </div>
     </div>
