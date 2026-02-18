@@ -1,47 +1,34 @@
-import { rackets } from "@/data/rackets";
-import Image from "next/image";
+import { IRacket } from "@/types/racket";
 import Link from "next/link";
+import { RacketItem } from "../RacketItem/RacketItem";
 import s from "./Rackets.module.css";
 
 type Props = {
-  limit?: number;
+  rackets: IRacket[];
+  title?: string;
   showAllLink?: boolean;
+  variant?: "grid" | "carousel";
 };
 
-export const Rackets = ({ limit, showAllLink }: Props) => {
-  const displayedRackets = limit ? rackets.slice(0, limit) : rackets;
-
+export const Rackets = ({
+  rackets,
+  title = "Ракетки",
+  showAllLink,
+  variant = "grid",
+}: Props) => {
   return (
     <section className={s.wrapper}>
       <div className={s.header}>
-        <h2 className={s.title}>Ракетки</h2>
-
+        <h2 className={s.title}>{title}</h2>
         {showAllLink && (
           <Link href="/rackets" className={s.allLink}>
             Все →
           </Link>
         )}
       </div>
-
-      <div className={s.grid}>
-        {displayedRackets.map((racket) => (
-          <Link
-            key={racket.id}
-            href={`/rackets/${racket.id}`}
-            className={s.card}
-          >
-            <div className={s.imageWrapper}>
-              <Image
-                src={racket.imageUrl}
-                alt={racket.name}
-                fill
-                style={{ objectFit: "contain" }}
-                unoptimized
-              />
-            </div>
-
-            <div className={s.name}>{racket.name}</div>
-          </Link>
+      <div className={variant === "grid" ? s.grid : s.carousel}>
+        {rackets.map((racket) => (
+          <RacketItem key={racket.id} racket={racket} />
         ))}
       </div>
     </section>

@@ -1,6 +1,19 @@
-import { Rackets } from "@/components/Rackets/Rackets";
+import { Loader } from "@/components/Loader/Loader";
+import { RacketsMain } from "@/components/racketContainers/RacketsMain";
+import { RacketsTop10 } from "@/components/racketContainers/RacketsTop10";
+import { Suspense } from "react";
+import s from "./MainPage.module.css";
 
-const Home = () => {
-  return <Rackets limit={3} showAllLink />;
+const MainPage = async () => {
+  return (
+    <div className={s.root}>
+      <Suspense fallback={<Loader />}>
+        <RacketsMain />
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        <RacketsTop10 />
+      </Suspense>
+    </div>
+  );
 };
-export default Home;
+export default MainPage;

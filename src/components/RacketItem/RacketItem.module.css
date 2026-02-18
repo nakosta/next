@@ -1,0 +1,26 @@
+.card {
+  text-decoration: none;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #e6f4ff;
+  transition: all 0.2s ease;
+  color: inherit;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+.imageWrapper {
+  position: relative;
+  height: 500px;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 16px;
+  padding-top: 10px;
+  text-align: center;
+}
