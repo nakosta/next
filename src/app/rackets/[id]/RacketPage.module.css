@@ -1,0 +1,92 @@
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid #e6f4ff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.imageSection {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: #1677ff;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.imageWrapper {
+  position: relative;
+  height: 600px;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand {
+  font-size: 14px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0f3057;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1677ff;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.meta span {
+  font-weight: 500;
+  color: #0f3057;
+}
+
+.description {
+  line-height: 1.6;
+  color: #555;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  background: #1677ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: #0958d9;
+}
