@@ -1,16 +1,17 @@
 import { Rackets } from "@/components/Rackets/Rackets";
 import { getRackets } from "@/services/getRackets";
+import { notFound } from "next/navigation";
 import s from "./RacketsPage.module.css";
 
 const RacketsPage = async () => {
   const { isError, data } = await getRackets({ limit: 20 });
 
   if (isError) {
-    return "isError";
+    return "Some error";
   }
 
   if (!data) {
-    return "not found";
+    notFound();
   }
 
   return (
