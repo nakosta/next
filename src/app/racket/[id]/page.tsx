@@ -1,16 +1,15 @@
-import { rackets } from "@/data/rackets";
+import { getRacketById } from "@/services/getRacketById";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import s from "./RacketPage.module.css";
 
-export async function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
-}
-
 const RacketPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
+  const { isError, data: racket } = await getRacketById(id);
 
-  const racket = rackets.find((item) => item.id === Number(id));
+  if (isError) {
+    return "Some error";
+  }
 
   if (!racket) {
     notFound();
