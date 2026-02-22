@@ -1,7 +1,35 @@
+import { getMetaRacketById } from "@/services/getMetaRacketById";
 import { getRacketById } from "@/services/getRacketById";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import s from "./RacketPage.module.css";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  const { data, isError } = await getMetaRacketById({ id });
+
+  if (isError || !data) {
+    return {
+      title: "Tennis racket store",
+      description: "Tennis next js app",
+    };
+  }
+
+  const {
+    name,
+    brand: { name: brandName },
+  } = data;
+
+  return {
+    title: `${name} - ${brandName}`,
+    description: `${name} - ${brandName}`,
+  };
+}
 
 const RacketPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;

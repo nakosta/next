@@ -1,6 +1,6 @@
 import { BASE_API_URL } from "@/constants/services";
 import { IRacket } from "@/types/racket";
-import { Response } from "@/types/request";
+import { Response } from "@/types/response";
 
 export const getRacketTop10 = async (): Response<IRacket[]> => {
   const result = await fetch(`${BASE_API_URL}/top-10`);
