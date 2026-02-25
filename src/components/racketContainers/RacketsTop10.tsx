@@ -1,9 +1,9 @@
-import { getRacketTop10 } from "@/services/getRacketTop10";
+import { getTop10Rackets } from "@/services/getTop10Rackets";
 import { notFound } from "next/navigation";
 import { Rackets } from "../Rackets/Rackets";
 
 export const RacketsTop10 = async () => {
-  const { isError, data } = await getRacketTop10();
+  const { isError, data } = await getTop10Rackets();
 
   if (isError) {
     return "Some error";

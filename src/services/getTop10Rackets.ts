@@ -1,9 +1,11 @@
 import { BASE_API_URL } from "@/constants/services";
 import { IRacket } from "@/types/racket";
-import { Response } from "@/types/request";
+import { Response } from "@/types/response";
 
-export const getRacketTop10 = async (): Response<IRacket[]> => {
-  const result = await fetch(`${BASE_API_URL}/top-10`);
+export const getTop10Rackets = async (): Response<IRacket[]> => {
+  const result = await fetch(`${BASE_API_URL}/top-10`, {
+    next: { tags: ["getTop10Rackets"] },
+  });
 
   if (result.status === 404) {
     return { isError: false, data: undefined };
