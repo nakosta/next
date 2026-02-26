@@ -1,22 +1,19 @@
 import { BASE_API_URL } from "@/constants/services";
-import { IRacket } from "@/types/racket";
 import { Response } from "@/types/response";
+import { IUser } from "@/types/user";
 import { cookies } from "next/headers";
 
-export const getRacketById = async (id: string): Response<IRacket> => {
+export const getUser = async (): Response<IUser> => {
   const cookieStore = await cookies();
 
-  const result = await fetch(`${BASE_API_URL}/product/${id}`, {
-    next: {
-      revalidate: 20,
-    },
+  const result = await fetch(`${BASE_API_URL}/auth/user`, {
     credentials: "include",
     headers: {
       Cookie: cookieStore.toString(),
     },
   });
 
-  if (result.status === 404) {
+  if (result.status === 401) {
     return { isError: false, data: undefined };
   }
 
@@ -24,7 +21,7 @@ export const getRacketById = async (id: string): Response<IRacket> => {
     return { isError: true, data: undefined };
   }
 
-  const { product } = await result.json();
+  const data: { user: IUser } = await result.json();
 
-  return { isError: false, data: product };
+  return { isError: false, data: data.user };
 };
